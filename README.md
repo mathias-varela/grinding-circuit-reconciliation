@@ -65,3 +65,12 @@ Each value in the table is marked as **Literature** (from a published source), *
 ### Consistency check
 
 As a quick check, I used Bond's equation with the nominal values and no efficiency factors: W = 10 × 13.5 × (1/√150 − 1/√2,500) ≈ 8.3 kWh/t. At 1,030 t/h, this gives about 8.6 MW at the pinion. Cadia's ball mills have 9.7 MW motors, so the result makes sense: the motor is bigger than the power the mill actually draws. Rowland's efficiency factors will be added later, and they should lower this value a bit.
+
+### Assumptions and limitations
+-**Circulating load:** Using a 300% circulating load doesn't affect Bond's energy, since Bond's equation and Rowland's factors don't depend on it. Therefore, it is left out of the sensitivity analysis. Limitation: in real operations circulating load affects the circuit capacity (Wills & Finch, 2016, p. 170).
+
+-**Bond with SAG mill product:** Bond's equation tends to overestimate the specific energy when the ball mill feed is SAG product, since it carries more fines than the feed Bond's equation was calibrated on. Morrell's model, on the other hand, includes ore particle size as a relevant factor. Limitation: this project uses Bond's equation because it is the most widely used model for ball mill modeling, so specific energy values may be somewhat overestimated. (Wills & Finch, 2016, p. 112)
+
+-**Constant power draw:** The ball mill operates at an approximately constant power draw because it has a fixed speed and a stable ball charge. Therefore, throughput is calculated from mill power draw and ore hardness (Wi): with a harder ore, the same power treats fewer tonnes. Limitation: in real operations, power draw changes according to ball and liner wear, and ball addition.
+
+-**One line of two:** Cadia's circuit consists of two parallel ball mills (Wills & Finch, 2016, p. 172). This project models only one of them. It is assumed that the fresh feed is split equally between the two lines. Limitation: in real operations, the feed is rarely split exactly equally between lines, and the feed to each line is not measured directly: it is estimated from the SAG feed weightometer and the cyclone overflow mass flowmeter.  
