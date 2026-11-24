@@ -78,3 +78,15 @@ As a quick check, I used Bond's equation with the nominal values and no efficien
 -**Rowland's factors:** Rowland's factors correct Bond's equation for mills that deviate from Bond's standard conditions (Wills & Finch, 2016, p. 113). In this circuit, most of them do not apply: grinding is wet and the circuit is closed, F80 is kept below Bond's optimum feed size (EF4=1), P80 value is higher than 75 µm (EF5 does not apply) and the reduction ratio is about 17 (EF7 does not apply). Only the mill diameter factor (EF3) applies, which will be added in the Bond stage. Limitation: until then, specific energy values are obtained without efficiency factors, so they are overestimated (around 8.3 kWh/t, instead of 7.6 kWh/t).
 
 -**Steady state:** Each simulated hour is assumed to be at steady state: in each node, what goes in equals what goes out, with no accumulation. Limitation: in a real operation, the sump level and the mill load change from hour to hour. As a result, hourly balances do not close, and it is not only because of measurement errors. In practice, data reconciliation is applied to stable periods or to sampling campaigns carried out with the circuit at steady state.
+
+## Roadmap
+This project is currently being developed. The planned stages and their status are listed below.
+
+- [x] Design basis and circuit description.
+- [ ] Simulated data generator (hourly data and sampling campaigns), December 2026.
+- [ ] Bond's equation with Rowland's factors, validated with Example 7.2 in Wills & Finch (2016), December 2026.
+- [ ] Mass balance and circulating load from particle size distributions, validated with Example 3.15 in Wills & Finch (2016), January 2027.
+- [ ] Data reconciliation based on weighted least squares, February 2027.
+- [ ] Wio/Wi, sensitivity analysis and final figures, March 2027.
+
+A second project, a Power BI dashboard of the same plant, is planned.
