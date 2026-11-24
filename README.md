@@ -17,13 +17,13 @@ Also, the ratio of the operating work index to the Bond work index is used to se
 
 This project covers a secondary grinding circuit. The circuit is fed by a SAG mill, which is out of scope because Bond's equation doesn't apply to SAG mills.
 
-In a SABC-A circuit, the SAG mill reduces ore size. The SAG trommel undersize falls into a sump. Pebbles (25-50 mm), which are too large to be broken efficiently and too small to act as grinding media, are rejected by the SAG mill and conveyed to a pebble crusher. There, they are crushed and returned to the SAG mill. 
+In a SABC-A circuit, the SAG mill reduces ore size. The SAG trommel undersize falls into a sump. Pebbles (25-50 mm) (Wills & Finch, 2016, p. 172), which are too large to be broken efficiently and too small to act as grinding media, are rejected by the SAG mill and conveyed to a pebble crusher. There, they are crushed and returned to the SAG mill. 
 Returning the crushed pebbles to the SAG mill is what defines a SABC-A circuit.
 
 The SAG trommel undersize already contains fines below the circuit's target size (P80). Therefore, to remove these particles from the circuit and avoid overgrinding, the sump slurry is pumped to hydrocyclones, which act as size classifiers. 
 If ore particles satisfy the target size (P80), they mostly report to the cyclone overflow, leaving the circuit and going to flotation. 
 On the other hand, particles that don't satisfy the target size report to the underflow and flow by gravity into the ball mill. The ball mill continues the grinding, and discharges into the sump, from where the sump slurry is pumped back to the hydrocyclones. 
-This defines a reverse classification circuit (RCC).
+This defines a reverse classification circuit (RCC) (Wills & Finch, 2016, p. 170).
 
 ## Design basis
 
@@ -67,17 +67,17 @@ Each value in the table is marked as **Literature** (from a published source), *
 As a quick check, I used Bond's equation with the nominal values and no efficiency factors: W = 10 × 13.5 × (1/√150 − 1/√2,500) ≈ 8.3 kWh/t. At 1,030 t/h, this gives about 8.6 MW at the pinion. Cadia's ball mills have 9.7 MW motors, so the result makes sense: the motor is bigger than the power the mill actually draws. Rowland's efficiency factors will be added later, and they should lower this value a bit.
 
 ### Assumptions and limitations
--**Circulating load:** Using a 300% circulating load doesn't affect Bond's energy, since Bond's equation and Rowland's factors don't depend on it. Therefore, it is left out of the sensitivity analysis. Limitation: in real operations circulating load affects the circuit capacity (Wills & Finch, 2016, p. 170).
+- **Circulating load:** Using a 300% circulating load doesn't affect Bond's energy, since Bond's equation and Rowland's factors don't depend on it. Therefore, it is left out of the sensitivity analysis. Limitation: in real operations circulating load affects the circuit capacity (Wills & Finch, 2016, p. 170).
 
--**Bond with SAG mill product:** Bond's equation tends to overestimate the specific energy when the ball mill feed is SAG product, since it carries more fines than the feed Bond's equation was calibrated on. Morrell's model, on the other hand, includes ore particle size as a relevant factor. Limitation: this project uses Bond's equation because it is the most widely used model for ball mill modeling, so specific energy values may be somewhat overestimated. (Wills & Finch, 2016, p. 112)
+- **Bond with SAG mill product:** Bond's equation tends to overestimate the specific energy when the ball mill feed is SAG product, since it carries more fines than the feed Bond's equation was calibrated on. Morrell's model, on the other hand, includes ore particle size as a relevant factor. Limitation: this project uses Bond's equation because it is the most widely used model for ball mill modeling, so specific energy values may be somewhat overestimated (Wills & Finch, 2016, p. 112).
 
--**Constant power draw:** The ball mill operates at an approximately constant power draw because it has a fixed speed and a stable ball charge. Therefore, throughput is calculated from mill power draw and ore hardness (Wi): with a harder ore, the same power treats fewer tonnes. Limitation: in real operations, power draw changes according to ball and liner wear, and ball addition.
+- **Constant power draw:** The ball mill operates at an approximately constant power draw because it has a fixed speed and a stable ball charge. Therefore, throughput is calculated from mill power draw and ore hardness (Wi): with a harder ore, the same power treats fewer tonnes. Limitation: in real operations, power draw changes according to ball and liner wear, and ball addition (Wills & Finch, 2016, p. 174).
 
--**One line of two:** Cadia's circuit consists of two parallel ball mills (Wills & Finch, 2016, p. 172). This project models only one of them. It is assumed that the fresh feed is split equally between the two lines. Limitation: in real operations, the feed is rarely split exactly equally between lines, and the feed to each line is not measured directly: it is estimated from the SAG feed weightometer and the cyclone overflow mass flowmeter.  
+- **One line of two:** Cadia's circuit consists of two parallel ball mills (Wills & Finch, 2016, p. 172). This project models only one of them. It is assumed that the fresh feed is split equally between the two lines. Limitation: in real operations, the feed is rarely split exactly equally between lines, and the feed to each line is not measured directly: it is estimated from the SAG feed weightometer and the cyclone overflow mass flowmeter.  
 
--**Rowland's factors:** Rowland's factors correct Bond's equation for mills that deviate from Bond's standard conditions (Wills & Finch, 2016, p. 113). In this circuit, most of them do not apply: grinding is wet and the circuit is closed, F80 is kept below Bond's optimum feed size (EF4=1), P80 value is higher than 75 µm (EF5 does not apply) and the reduction ratio is about 17 (EF7 does not apply). Only the mill diameter factor (EF3) applies, which will be added in the Bond stage. Limitation: until then, specific energy values are obtained without efficiency factors, so they are overestimated (around 8.3 kWh/t, instead of 7.6 kWh/t).
+- **Rowland's factors:** Rowland's factors correct Bond's equation for mills that deviate from Bond's standard conditions (Wills & Finch, 2016, p. 113). In this circuit, most of them do not apply: grinding is wet and the circuit is closed, F80 is kept below Bond's optimum feed size (EF4=1), P80 value is higher than 75 µm (EF5 does not apply) and the reduction ratio is about 17 (EF7 does not apply). Only the mill diameter factor (EF3) applies, which will be added in the Bond stage. Limitation: until then, specific energy values are obtained without efficiency factors, so they are overestimated (around 8.3 kWh/t, instead of 7.6 kWh/t).
 
--**Steady state:** Each simulated hour is assumed to be at steady state: in each node, what goes in equals what goes out, with no accumulation. Limitation: in a real operation, the sump level and the mill load change from hour to hour. As a result, hourly balances do not close, and it is not only because of measurement errors. In practice, data reconciliation is applied to stable periods or to sampling campaigns carried out with the circuit at steady state.
+- **Steady state:** Each simulated hour is assumed to be at steady state: in each node, what goes in equals what goes out, with no accumulation. Limitation: in a real operation, the sump level and the mill load change from hour to hour. As a result, hourly balances do not close, and it is not only because of measurement errors. In practice, data reconciliation is applied to stable periods or to sampling campaigns carried out with the circuit at steady state.
 
 ## Roadmap
 This project is currently being developed. The planned stages and their status are listed below.
@@ -90,3 +90,18 @@ This project is currently being developed. The planned stages and their status a
 - [ ] Wio/Wi, sensitivity analysis and final figures, March 2027.
 
 A second project, a Power BI dashboard of the same plant, is planned.
+
+## Repository structure
+The repository is organized as follows:
+
+- `data/`: simulated data generated by the project.
+- `notebooks/`: exploratory analysis in Jupyter notebooks.
+- `src/`: reusable code (generator, Bond, mass balances, reconciliation).
+- `figures/`: figures for the README and LinkedIn posts.
+- `requirements.txt`: Python libraries used in the project.
+
+## References
+
+- Wills, B. A., & Finch, J. A. (2016). *Wills' mineral processing technology: An introduction to the practical aspects of ore treatment and mineral recovery* (8th ed.). Butterworth-Heinemann.
+
+Dunne et al. (2001), Morrell's model and Rowland's efficiency factors are cited as described in Wills & Finch (2016); the original sources were not consulted directly.
